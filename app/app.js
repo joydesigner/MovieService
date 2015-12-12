@@ -1,14 +1,20 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('movieServiceApp', [
     'ngRoute',
-    'myApp.controllers',
-    'myApp.directives',
-    'myApp.services',
-    'myApp.filters'
+    'movieServiceApp.controllers',
+    'movieServiceApp.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/',{templateUrl: 'partials/movie-list.html', controller: 'MovieListCtrl'});
-        $routeProvider.otherwise({redirectTo: '/'});
+        $routeProvider
+            .when('/',{
+                templateUrl: 'partials/movie-details.html',
+                controller: 'MovieDetailCtrl',
+                controllerAs: 'vm'
+            })
+            .otherwise(
+            {
+                redirectTo: '/'
+            });
 }]);
